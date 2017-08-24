@@ -16,13 +16,12 @@ post '/topping_chooser' do
 	session[:cheeses] = params[:cheese]
 	session[:meats] = params[:meat]
 	session[:veggies] = params[:veggie]
-
-	redirect '/confirm?'
+	redirect 'confirm_toppings'
 end
 
-get '/confirm' do
+get '/confirm_toppings' do 
 	erb :confirm, locals:{size: session[:sizes], crust: session[:crusts], sauce: session[:sauces], cheese: session[:cheeses], meat: session[:meats], veggie: session[:veggies]}
 end
 
-post '/confirm' do
+post '/confirm_toppings' do
 end
