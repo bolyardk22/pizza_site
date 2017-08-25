@@ -6,12 +6,51 @@
 
 	<h1>"Are these toppings correct?"</h1>
 
-	<p><%= size %></p>
-	<p><%= crust %></p>
-	<p><%= sauce %></p>
-	<p><%= cheese %></p>
-	<p><%= meat %></p>
-	<p><%= veggie %></p>
+	<h2>Size:</h2>
+	<p><%= size %>
+	<input type = "radio" name = "size_radio[]" value = "<%= size %>" required checked> Yes
+	<input type = "radio" name = "size_radio[]" value = "no"> No </p>
+	<img src = "/img/<%= size %>.jpg"></p><br><br><br>
+
+	<h2>Crust:</h2>
+	<p><% crust.each do |crust_value| %>
+	<%= crust_value %>
+	<input type = "radio" name = "crust_radio[]" value = "<%= crust_value %>" required checked> Yes
+	<input type = "radio" name = "crust_radio[]" value = "no"> No </p>
+	<img src = "/img/<%= crust_value %>.jpg">
+   	<% end %></p><br><br><br>
+
+	<h2>Sauce:</h2>
+	<p><% sauce.each do |crust_value| %>
+	<%= crust_value %>
+	<input type = "radio" name = "sauce_radio[]" value = "<%= crust_value %>" required checked> Yes
+	<input type = "radio" name = "sauce_radio[]" value = "no"> No </p>
+	<img src = "/img/<%= crust_value %>.jpg">
+   	<% end %></p><br><br><br>
+
+   	<h2>Cheese:</h2>
+	<p><% cheese.each do |crust_value| %>
+	<%= crust_value %>
+	<input type = "radio" name = "cheese_radio[]" value = "<%= crust_value %>" required checked> Yes
+	<input type = "radio" name = "cheese_radio[]" value = "no"> No </p>
+	<img src = "/img/<%= crust_value %>.jpg">
+   	<% end %></p><br><br><br>
+
+   	<h2>Meat:</h2>
+	<p><% meat.each do |crust_value| %>
+	<%= crust_value %>
+	<input type = "radio" name = "meat_radio[]" value = "<%= crust_value %>" required checked> Yes
+	<input type = "radio" name = "meat_radio[]" value = "no"> No </p>
+	<img src = "/img/<%= crust_value %>.jpg"><br><br><br>
+   	<% end %></p><br><br><br>
+
+   	<h2>Veggies:</h2>
+	<p><% veggie.each do |crust_value| %>
+	<%= crust_value %>
+	<input type = "radio" name = "veggie_radio[]" value = "<%= crust_value %>" required checked> Yes
+	<input type = "radio" name = "veggie_radio[]" value = "no"> No </p>
+	<img src = "/img/<%= crust_value %>.jpg"><br><br><br>
+   	<% end %></p>
 
 	<input type="submit" value="confirm order">
 
