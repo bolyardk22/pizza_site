@@ -6,22 +6,48 @@ get '/' do
 end
 
 get '/topping_chooser' do
-	erb :toppins
+# 	session[:sizes] = params[:size]
+# 	session[:crusts] = params[:crust]
+# 	session[:sauces] = params[:sauce]
+# 	session[:cheeses] = params[:cheese]
+# 	session[:meats] = params[:meat]
+# 	session[:veggies] = params[:veggie]
+ 	erb :toppins
 end
 
-post '/topping_chooser' do
+post '/confirm_toppings' do
 	session[:sizes] = params[:size]
 	session[:crusts] = params[:crust]
 	session[:sauces] = params[:sauce]
 	session[:cheeses] = params[:cheese]
 	session[:meats] = params[:meat]
 	session[:veggies] = params[:veggie]
-	redirect 'confirm_toppings'
+
+	if session[:meats] == nil 
+		session[:meats] = Array["No Meat"]
+	end
+
+	if session[:veggies] == nil
+		session[:veggies] = Array["No Veggies"]
+	end
+
+	redirect '/confirm'
 end
 
-get '/confirm_toppings' do 
+get '/confirm' do 
 	erb :confirm, locals:{size: session[:sizes], crust: session[:crusts], sauce: session[:sauces], cheese: session[:cheeses], meat: session[:meats], veggie: session[:veggies]}
 end
 
-post '/confirm_toppings' do
+post '/blah' do
+	session[:sizes] = params[:size].to_a
+	session[:crusts] = params[:crust]
+	session[:sauces] = params[:sauce]
+	session[:cheeses] = params[:cheese]
+	session[:meats] = params[:meat]
+	session[:veggies] = params[:veggie]
+	redirect '/the_end'
+end
+
+get '/the_end' do
+	erb :final
 end

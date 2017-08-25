@@ -3,13 +3,13 @@
 <form method="post" action="/confirm_toppings">
 	<h3>Please select your size:</h3>
 
-		<p><input type="radio" id="personal_pan" value="personal_pan" name="size[]">Personal pan</p><div class="photo">
+		<p><input type="radio" id="personal_pan" value="personal_pan" name="size">Personal pan</p><div class="photo">
 		<img src="/img/personal_pan.jpg"></div>
 
-		<p><input type="radio" id="medium" value="medium" name="size[]" checked>Medium</p>
+		<p><input type="radio" id="medium" value="medium" name="size" checked>Medium</p>
 		<div class="photo"><img src="/img/medium.jpg"></div>
 
-		<p><input type="radio" id="large" value="large" name="size[]">Large</p>
+		<p><input type="radio" id="large" value="large" name="size">Large</p>
 		<div class="photo"><img src="/img/large.jpg"></div>
 
 	<h3>Please select your crust style:</h3>
@@ -124,5 +124,6 @@
 		<p><input type="checkbox" id="roma_tomato" value="roma_tomato" name="veggie[]">Roma tomato</p>
 		<div class="photo"><img src="/img/tomato.jpg"></div>
 
-	<input type='submit' value="Submit Order">
+	<input type="submit" value="Submit Order">
 </form>
+
