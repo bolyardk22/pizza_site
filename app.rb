@@ -41,9 +41,11 @@ post '/blah' do
     session[:meat_choice] = params[:meat_radio]
     session[:veggie_choice] = params[:veggie_radio]
 
+    p session[:size_choice], session[:crust_choice], session[:sauce_choice], session[:cheese_choice], session[:meat_choice], session[:veggie_choice]
+
 	redirect '/the_end'
 end
 
 get '/the_end' do
-	erb :final, locals:{size: session[:size_choice], crust: session[:crust_choice], sauce: session[:sauce_choice], meat: session[:meat_choice], veggie: session[:veggie_choice], cheese: session[:cheese_choice]}
+	erb :final, locals:{size1: session[:size_choice], crust1: session[:crust_choice], sauce1: session[:sauce_choice], meat1: session[:meat_choice], veggie1: session[:veggie_choice], cheese1: session[:cheese_choice]}
 end
