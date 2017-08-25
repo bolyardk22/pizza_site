@@ -1,7 +1,46 @@
 <link rel="stylesheet" type "text/css" href="css/style.css">
 
 <form>
-	<h1>"hellosteven"</h1>
+	<h1>Your <%=size.join%> pizza will have:</h1>
+
+	<form method = "get" action = "/results">      
+
+
+		<% crust.each do |crust_value, key| %>
+			<% if crust_value == key %>	
+				<p> <%= crust_value %> Crust </p>
+				<img src = "/img/<%= crust_value %>.jpg">
+			<% end %>
+		<% end %>
+
+		<% sauce.each do |sauce_value, key| %>
+			<% if sauce_value == key %>	
+				<p> <%= sauce_value %> Sauce </p>
+				<img src = "/img/<%= sauce_value %>.jpg">
+			<% end %>
+		<% end %>
+
+		% cheese.each do |cheese_value, key| %>
+			<% if cheese_value == key %> 
+				<p> <%= cheese_value %> </p>
+				<img src = "/img/<%= cheese_value %>.jpg">
+			<% end %>
+		<% end %>
+
+		<% meat.each do |meat_value, key| %>
+			<% if meat_value == key %> 
+				<p> <%= meat_value %> </p>
+				<img src = "/img/<%= meat_value %>.jpg">
+			<% end %>
+		<% end %>
+
+		<% veggie.each do |veggie_value, key| %>
+			<% if veggie_value == key %> 
+				<p> <%= veggie_value %> </p>
+				<img src = "/img/<%= veggie_value %>.jpg">
+			<% end %>
+		<% end %>
+		
 	<a href="/topping_chooser">Order Again</a>
 
 </form>
