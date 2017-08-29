@@ -1,10 +1,7 @@
 <link rel="stylesheet" type "text/css" href="css/style.css">
 
-<form>
-	<h1>Your <%=size1.join%> pizza will have:</h1>
-
-	<form method = "get" action = "/the_end">      
-
+<form method = "post" action = "/delivery">
+	<h1>Pizza number <%=pizza_number%> is <%=size1.join%> with:</h1>
 
 		<% crust1.each do |crust_value, key| %>
 			<% if crust_value == key %>	
@@ -41,6 +38,10 @@
 			<% end %>
 		<% end %>
 
-	<a href="/topping_chooser">Order Again</a>
+	Is this for delivery, pick up, or dine in?
+	<p><input type = "radio" name = "delivered" value = "delivery" required checked>Delivery</p>
+	<p><input type = "radio" name = "delivered" value = "pick_up">Pick Up</p>
+	<p><input type = "radio" name = "delivered" value = "dine_in">Dine In</p>
+	<p><input type = "submit" value = "Submit"></p>
 
 </form>

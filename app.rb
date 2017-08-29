@@ -10,6 +10,7 @@ get '/topping_chooser' do
 end
 
 post '/confirm_toppings' do
+	session[:pizza_number] = 1
 	session[:sizes] = params[:size]
 	session[:crusts] = params[:crust]
 	session[:sauces] = params[:sauce]
@@ -29,11 +30,11 @@ post '/confirm_toppings' do
 end
 
 get '/confirm' do 
-	erb :confirm, locals:{size: session[:sizes], crust: session[:crusts], sauce: session[:sauces], cheese: session[:cheeses], meat: session[:meats], veggie: session[:veggies]}
+	erb :confirm, locals:{size: session[:sizes], crust: session[:crusts], sauce: session[:sauces], cheese: session[:cheeses], meat: session[:meats], veggie: session[:veggies], pizza_number: session[:pizza_number]}
 end
 
 post '/blah' do
-
+	session[:pizza_number] = params[:pizza_number]
 	session[:size_choice] = params[:size_radio]
 	session[:crust_choice] = params[:crust_radio]
     session[:sauce_choice] = params[:sauce_radio]
@@ -41,11 +42,16 @@ post '/blah' do
     session[:meat_choice] = params[:meat_radio]
     session[:veggie_choice] = params[:veggie_radio]
 
-    p session[:size_choice], session[:crust_choice], session[:sauce_choice], session[:cheese_choice], session[:meat_choice], session[:veggie_choice]
+    p session[:size_choice], session[:crust_choice], session[:sauce_choice], session[:cheese_choice], session[:meat_choice], session[:veggie_choice], session[:pizza_number]
 
 	redirect '/the_end'
 end
 
 get '/the_end' do
-	erb :final, locals:{size1: session[:size_choice], crust1: session[:crust_choice], sauce1: session[:sauce_choice], meat1: session[:meat_choice], veggie1: session[:veggie_choice], cheese1: session[:cheese_choice]}
+	erb :final, locals:{size1: session[:size_choice], crust1: session[:crust_choice], sauce1: session[:sauce_choice], meat1: session[:meat_choice], veggie1: session[:veggie_choice], cheese1: session[:cheese_choice], pizza_number: session[:pizza_number]}
+end
+
+post '/delivery' do
+	session[:delivered] = params[:delivered]
+	erb :total_page
 end
