@@ -1,12 +1,24 @@
 <link rel="stylesheet" type "text/css" href="css/style.css">
 
 <form method = "post" action = "/delivery">
-	<h1>Pizza number <%=pizza_number%> is <%=size1.join%> with:</h1>
+
+	<% current_pizza = [] %>
+
+	<h1>Pizza number <%=pizza_num%>:</h1>
+
+		<% size1.each do |size_value, key| %>
+			<% if size_value == key %>
+				<p> <%= size_value %> Size </p>
+				<img src = "/img/<%= size_value %>.jpg"><br><br>
+				<% current_pizza.push(size_value) %>
+			<% end %>
+		<% end %>
 
 		<% crust1.each do |crust_value, key| %>
 			<% if crust_value == key %>	
 				<p> <%= crust_value %> Crust </p>
 				<img src = "/img/<%= crust_value %>.jpg"><br><br>
+				<% current_pizza.push(crust_value) %>
 			<% end %>
 		<% end %>
 
@@ -14,6 +26,7 @@
 			<% if sauce_value == key %>	
 				<p> <%= sauce_value %> Sauce </p>
 				<img src = "/img/<%= sauce_value %>.jpg"><br><br>
+				<% current_pizza.push(sauce_value) %>
 			<% end %>
 		<% end %>
 
@@ -21,6 +34,7 @@
 			<% if cheese_value == key %> 
 				<p> <%= cheese_value %> </p>
 				<img src = "/img/<%= cheese_value %>.jpg"><br><br>
+				<% current_pizza.push(cheese_value) %>
 			<% end %>
 		<% end %>
 
@@ -28,6 +42,7 @@
 			<% if meat_value == key %> 
 				<p> <%= meat_value %> </p>
 				<img src = "/img/<%= meat_value %>.jpg"><br><br>
+				<% current_pizza.push(meat_value) %>
 			<% end %>
 		<% end %>
 
@@ -35,13 +50,17 @@
 			<% if veggie_value == key %> 
 				<p> <%= veggie_value %> </p>
 				<img src = "/img/<%= veggie_value %>.jpg"><br><br>
+				<% current_pizza.push(veggie_value) %>
 			<% end %>
 		<% end %>
+
+		<%=current_pizza%>
 
 	Is this for delivery, pick up, or dine in?
 	<p><input type = "radio" name = "delivered" value = "delivery" required checked>Delivery</p>
 	<p><input type = "radio" name = "delivered" value = "pick_up">Pick Up</p>
 	<p><input type = "radio" name = "delivered" value = "dine_in">Dine In</p>
+	<input type = "hidden" name = "current_pizza_array" value = "<%=current_pizza%>">
 	<p><input type = "submit" value = "Submit"></p>
 
 </form>
